@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cyan: #00d4e8;
+    --navy: #07111d;
+  }
+  body {
+    @apply bg-navy-950 text-slate-100 font-dm;
+    overflow-x: hidden;
+  }
+  * { box-sizing: border-box; }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/[0.04] border border-white/[0.08] rounded-2xl backdrop-blur-xl;
+  }
+  .input-field {
+    @apply w-full bg-white/[0.05] border border-white/[0.08] rounded-xl px-4 py-3
+           text-slate-100 placeholder-white/20 outline-none text-sm
+           focus:border-primary-500 focus:ring-2 focus:ring-primary-500/10 transition-all;
+  }
+  .btn-primary {
+    @apply w-full py-3.5 rounded-xl bg-primary-500 text-navy-950 font-syne font-bold text-[15px]
+           flex items-center justify-center gap-2 cursor-pointer border-none
+           hover:bg-primary-400 transition-all shadow-[0_0_24px_rgba(0,212,232,0.2)]
+           hover:shadow-[0_0_36px_rgba(0,212,232,0.35)] hover:-translate-y-px active:translate-y-0;
+  }
+  .btn-outline {
+    @apply px-4 py-2 rounded-xl text-sm font-semibold border border-white/10
+           text-white/50 bg-transparent cursor-pointer transition-all
+           hover:border-white/20 hover:text-white flex items-center gap-1.5;
+  }
+  .btn-danger {
+    @apply px-4 py-2 rounded-xl text-sm font-semibold border border-red-500/20
+           text-red-400 bg-transparent cursor-pointer transition-all
+           hover:bg-red-500/10 flex items-center gap-1.5;
+  }
+  .label {
+    @apply block text-[10px] font-bold tracking-[0.15em] uppercase text-primary-500 mb-2;
+  }
+  .seg-btn {
+    @apply px-4 py-2.5 rounded-xl text-[13px] font-semibold border border-white/10
+           bg-transparent text-white/50 cursor-pointer transition-all font-syne
+           hover:border-white/20 hover:text-white;
+  }
+  .seg-btn.active {
+    @apply bg-primary-500 border-primary-500 text-navy-950;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,212,232,0.2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,212,232,0.35); }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%  { opacity: 0.4; transform: scale(0.8); }
+}
+.anim-fade-up { animation: fadeUp 0.5s ease both; }
+.badge-dot { animation: pulse-dot 2s ease infinite; }
